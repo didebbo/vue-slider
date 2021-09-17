@@ -16,9 +16,10 @@
 
     <div id="slider">
         <i class="fas fa-chevron-circle-left" @click="prevImage"></i>
-        <img :src="bird.src" :alt="bird.name">
+        <img v-for="(image, index) in bird.images" v-show="index == bird.index" :key="index"
+            :src="`${bird.src}${image}.jpg`" :alt="`Bird ${image}`">
         <ul>
-            <li v-for="(image, index) in bird.images">
+            <li v-for="(image, index) in bird.images" :key="index">
                 <i class="fas fa-circle" :class="activeCircle(index)" @click="goToImage(index)"></i>
             </li>
         </ul>

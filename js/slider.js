@@ -18,8 +18,6 @@ const root = new Vue(
             renderImage: function () {
                 if (this.bird.index >= this.bird.images.length) this.bird.index = 0;
                 else if (this.bird.index < 0) this.bird.index = this.bird.images.length - 1;
-                this.bird.name = "Bird " + this.bird.images[this.bird.index];
-                this.bird.src = "images/" + this.bird.images[this.bird.index] + ".jpg";
             },
             activeCircle: function (index) {
                 if (index == this.bird.index) return "active";
