@@ -40,6 +40,7 @@ const root = new Vue(
             },
             goToImage: function (index) {
                 this.bird.index = index;
+                this.autoplay = false;
                 this.renderImage();
             },
             autoPlay: function (s) {
