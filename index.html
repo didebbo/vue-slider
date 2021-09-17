@@ -19,7 +19,7 @@
         <img :src="bird.src" :alt="bird.name">
         <ul>
             <li v-for="(image, index) in bird.images">
-                <i class="fas fa-circle" :class="activeCircle(index)"></i>
+                <i class="fas fa-circle" :class="activeCircle(index)" @click="goToImage(index)"></i>
             </li>
         </ul>
         <i class="fas fa-chevron-circle-right" @click="nextImage"></i>
