@@ -25,34 +25,39 @@ const root = new Vue(
                 if (index == this.bird.index) return "active";
             },
             nextImage: function () {
-                this.bird.index++;
                 this.autoplay = false;
+                this.bird.index++;
                 this.renderImage();
             },
             prevImage: function () {
-                this.bird.index--;
                 this.autoplay = false;
+                this.bird.index--;
+                this.renderImage();
+            },
+            goToImage: function (index) {
+                this.autoplay = false;
+                this.bird.index = index;
                 this.renderImage();
             },
             autoImage: function () {
                 this.bird.index++;
                 this.renderImage();
             },
-            goToImage: function (index) {
-                this.bird.index = index;
-                this.autoplay = false;
-                this.renderImage();
-            },
             autoPlay: function (s) {
-                setInterval(() => {
+                const autoPlay = setInterval(() => {
                     if (!this.autoplay) {
-                        setTimeout(() => {
-                            this.autoplay = true;
-                        }, 10000);
+                        clearInterval(autoPlay);
+                        this.restoreAutoPlay(10);
                     }
                     else this.autoImage();
                 }, 1000 * s);
             },
+            restoreAutoPlay: function (t) {
+                setTimeout(() => {
+                    this.autoplay = true;
+                    this.autoPlay(2);
+                }, 1000 * t);
+            }
         }
     }
 );
