@@ -15,20 +15,14 @@
 <body>
 
     <div id="slider">
-        <i class="fas fa-chevron-circle-left"></i>
-        <img src="images/01.jpg" alt="01">
+        <i class="fas fa-chevron-circle-left" @click="prevImage"></i>
+        <img :src="bird.src" :alt="bird.name">
         <ul>
-            <li>
-                <i class="fas fa-circle"></i>
-            </li>
-            <li>
-                <i class="fas fa-circle active"></i>
-            </li>
-            <li>
-                <i class="fas fa-circle"></i>
+            <li v-for="(image, index) in bird.images">
+                <i class="fas fa-circle" :class="activeCircle(index)"></i>
             </li>
         </ul>
-        <i class="fas fa-chevron-circle-right"></i>
+        <i class="fas fa-chevron-circle-right" @click="nextImage"></i>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
