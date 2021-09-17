@@ -12,7 +12,7 @@ const root = new Vue(
         },
         mounted: function () {
             this.renderImage();
-            this.autoPlay(3);
+            this.autoPlay(5);
         },
         methods: {
             renderImage: function () {
