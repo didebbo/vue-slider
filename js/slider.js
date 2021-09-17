@@ -12,7 +12,7 @@ const root = new Vue(
         },
         mounted: function () {
             this.renderImage();
-            this.autoPlay(3);
+            this.autoPlay(1);
         },
         methods: {
             renderImage: function () {
@@ -44,14 +44,15 @@ const root = new Vue(
                 this.renderImage();
             },
             autoPlay: function (s) {
-                const autoPlay = setInterval(() => {
+                setInterval(() => {
                     if (!this.autoplay) {
-                        clearInterval(autoPlay);
-                        return;
+                        setTimeout(() => {
+                            this.autoplay = true;
+                        }, 10000);
                     }
-                    this.autoImage();
+                    else this.autoImage();
                 }, 1000 * s);
-            }
+            },
         }
     }
 );
