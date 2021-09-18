@@ -3,7 +3,7 @@ const root = new Vue(
         el: "#slider",
         data: {
             autoplay: true,
-            smooth: false,
+            autoPlayCounter: 0,
             bird: {
                 index: 0,
                 images: ['01', '02', '03', '04', '05'],
@@ -55,10 +55,16 @@ const root = new Vue(
                 }, 1000 * s);
             },
             restoreAutoPlay: function (t) {
-                setTimeout(() => {
+                const restoreAutoPlay = setInterval(() => {
+                    if (!this.autoplay) this.autoPlayCounter = 0;
                     this.autoplay = true;
-                    this.autoPlay(2);
-                }, 1000 * t);
+                    this.autoPlayCounter++;
+                    if (this.autoPlayCounter >= t) {
+                        this.autoPlayCounter = 0;
+                        this.autoPlay(2);
+                        clearInterval(restoreAutoPlay);
+                    }
+                }, 1000);
             }
         }
     }
