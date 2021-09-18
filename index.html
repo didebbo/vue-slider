@@ -18,7 +18,7 @@
         <i class="fas fa-chevron-circle-left" @click="prevImage"></i>
         <div class="view">
             <img v-for="(image, index) in bird.images" :key="index" :id="index" :src="`${bird.src}${image}.jpg`"
-                :alt="`Bird ${image}`">
+                :alt="`Bird ${image}`" :class="opt(index)">
         </div>
         <ul>
             <li v-for="(image, index) in bird.images" :key="index">

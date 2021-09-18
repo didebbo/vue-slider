@@ -3,6 +3,7 @@ const root = new Vue(
         el: "#slider",
         data: {
             autoplay: true,
+            smooth: false,
             bird: {
                 index: 0,
                 images: ['01', '02', '03', '04', '05'],
@@ -18,7 +19,9 @@ const root = new Vue(
             renderImage: function () {
                 if (this.bird.index >= this.bird.images.length) this.bird.index = 0;
                 else if (this.bird.index < 0) this.bird.index = this.bird.images.length - 1;
-                window.location.href = "#" + this.bird.index;
+            },
+            opt: function (index) {
+                if (index == this.bird.index) return "opt-1";
             },
             activeCircle: function (index) {
                 if (index == this.bird.index) return "active";
