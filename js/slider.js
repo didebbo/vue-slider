@@ -48,22 +48,26 @@ const root = new Vue(
             autoPlay: function (s) {
                 const autoPlay = setInterval(() => {
                     if (!this.autoplay) {
-                        clearInterval(autoPlay);
                         this.restoreAutoPlay(10);
+                        clearInterval(autoPlay);
                     }
                     else this.autoImage();
                 }, 1000 * s);
             },
             restoreAutoPlay: function (t) {
                 const restoreAutoPlay = setInterval(() => {
-                    if (!this.autoplay) this.autoPlayCounter = 0;
-                    this.autoplay = true;
-                    this.autoPlayCounter++;
-                    if (this.autoPlayCounter >= t) {
+                    if (!this.autoplay) {
+                        this.autoPlayCounter = 0;
+                        this.autoplay = true;
+                        clearInterval(restoreAutoPlay);
+                        this.restoreAutoPlay(10);
+                    }
+                    else if (this.autoPlayCounter >= t) {
                         this.autoPlayCounter = 0;
                         this.autoPlay(2);
                         clearInterval(restoreAutoPlay);
                     }
+                    this.autoPlayCounter++;
                 }, 1000);
             }
         }
