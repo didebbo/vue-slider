@@ -14,7 +14,7 @@
 
 <body>
 
-    <div id="slider">
+    <div id="slide">
         <i class="fas fa-chevron-circle-left" @click="prevImage"></i>
         <div class="view">
             <img v-for="(image, index) in bird.images" :key="index" :id="index" :src="`${bird.src}${image}.jpg`"

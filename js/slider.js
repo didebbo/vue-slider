@@ -1,6 +1,6 @@
 const root = new Vue(
     {
-        el: "#slider",
+        el: "#slide",
         data: {
             autoplay: true,
             autoPlayCounter: 0,
